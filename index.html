@@ -1,0 +1,35 @@
+---
+layout: home
+title: Home
+---
+
+{% if paginator.page != 1 %}
+	<div class="nine columns pagination top">
+		Page: {{paginator.page}} of {{paginator.total_pages}}
+	</div>
+{% endif %}
+<div id="recent-activity">
+	{% for post in paginator.posts %}
+		<div class="three columns">
+			<em>{{post.date | date: "%b %d %Y"}}</em>
+		</div>
+		<div class="six columns">
+			<a href="{% if post.original %}{{ post.original }}{% else %}{{ post.url }}{% endif %}" title="{{ post.title }}">{{ post.title }}</a>
+		</div>
+	{% endfor %}
+</div>
+{% if paginator.total_pages != 1 %}
+	<div class="nine columns pagination">
+		{% if paginator.previous_page %}
+			{% if paginator.previous_page == 1 %}
+				<a href="/" class="previous">Previous</a>
+			{% else %}
+				<a href="/page{{paginator.previous_page}}/" class="previous">Previous</a>
+			{% endif %}
+		{% endif %}
+		<span class="page_number ">Page: {{paginator.page}} of {{paginator.total_pages}}</span>
+		{% if paginator.next_page %}
+			<a href="/page{{paginator.next_page}}/" class="next">Next</a>
+		{% endif %}
+	</div>
+{% endif %}

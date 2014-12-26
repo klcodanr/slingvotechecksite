@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>{% if page.title %} {{ page.title }} | {% endif %} DanKlco.com</title>
+		{% if page.tags %}<meta content="{{page.tags | join: ', '}}" name="keywords" />{% endif %}
+		{% if page.summary %}<meta content="{{ page.summary }}" name="description" />{% endif %}
+		<meta content="{{ site.author }}" name="author" />
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" />
+		<meta property="og:site_name" content="DanKlco.com"/>
+		<meta property="og:type" content="blog"/>
+		<meta property="og:title" content="{% if page.title %} {{ page.title }} | {% endif %} DanKlco.com"/>
+		<meta property="og:image" content="{{ site.parenturl }}/images/me.jpg"/>
+		{% if page.original %}
+			<meta property="og:url" content="{{page.original}}"/>
+			<link rel="canonical" href="{{ page.original }}" />
+		{% else %}
+			<meta property="og:url" content="{{ site.parenturl }}{{page.url | remove: 'index.html' | replace: '.html', '' | replace: ' ', '%20' }}"/>
+			<link rel="canonical" href="{{ site.parenturl }}{{page.url | remove: 'index.html' | replace: '.html', '' | replace: ' ', '%20' }}" />
+		{% endif %}
+{% bundle %}[{{ site.parenturl }}/css/base.css, {{ site.parenturl }}/css/skeleton.css, {{ site.parenturl }}/css/layout.css, {{ site.parenturl }}/css/colorbox.css ]{% endbundle %}
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" href="/feed.xml" title="DanKlco.com RSS Feed" />
+		<link rel="author" href="https://plus.google.com/109214091683324297793"/>
+	</head>
+	<body vocab="http://schema.org/">
+		<div class="container">
+			<header>
+				<div class="header-text" typeof="Person">
+					<img src="{{ site.parenturl }}/images/me.jpg" alt="Me on Mt. Etna" width="120" height="120" property="photo" id="header-img" />
+					<h1 property="name">Daniel Klco</h1>
+					<p property="description">
+						Hello. I am a programmer and Web Content Management specialist based out of Cincinnati, Ohio. 
+						Currently working as an Associate Director at <a href="http://www.sixdimensions.com" title="My Employer">Six Dimensions</a> and specializing in the Adobe Experience Manager and Adobe Marketing Cloud platforms.
+						<a href="//plus.google.com/109214091683324297793?rel=author" rel="publisher" target="_top" style="text-decoration:none;">
+							<img src="//ssl.gstatic.com/images/icons/gplus-16.png" alt="Google+" width="16" height="16" />
+						</a>
+					</p>
+				</div>
+			</header>
+			<div class="clear"></div>
+			<nav>
+				<div class="sixteen columns content">
+					<ul>
+						<li><a href="{{ site.parenturl }}/" {% if page.url == '/index.html' %}class="active"{% endif %}>Home</a></li>
+						<li><a href="{{ site.parenturl }}/my-work" {% if page.url == '/my-work.html' %}class="active"{% endif %}>My Work</a></li>
+						<li><a href="{{ site.parenturl }}/curriculum-vitae" {% if page.url == '/curriculum-vitae.html' %}class="active"{% endif %}>Curriculum Vitae</a></li>
+						<li><a href="{{ site.parenturl }}/projects" {% if page.url == '/projects.html' %}class="active"{% endif %}>Projects</a></li>
+						<li><a href="{{ site.parenturl }}/contact" {% if page.url == '/contact.html' %}class="active"{% endif %}>Contact</a></li>
+					</ul>
+				</div>
+			</nav>
+			<div class="clear"></div>
+			{{ content }}
+			<div class="clear"></div>
+			<footer>
+				Copyright &copy; 2012 -  {{ site.author }} | <a href="{{ site.parenturl }}/search" title="Search Site">Search</a>
+				<br/>
+				<hr/>
+				<br/>
+				<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/deed.en_US">
+					<img alt="Creative Commons License" width="88" height="31" src="{{ site.parenturl }}/images/cc-license.png" />
+				</a><br />
+				This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/deed.en_US">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 United States License</a>.
+			</footer>
+		</div>
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+{% bundle %}[//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js, {{ site.parenturl }}/js/jquery.colorbox-min.js, {{ site.parenturl }}/js/custom.js] {% endbundle %}
+		<script>
+			var track = true;
+			try {
+				if (window.location.search == '?track=false') {
+					window.localStorage.setItem('track', 'false');
+					track = false;
+				}
+				if (window.localStorage.getItem('track') == 'false') {
+					track = false;
+				}
+			} catch(e) {
+				// problem occurred with local storage
+			}
+			var _gaq = _gaq || [];
+			if (track) {
+				_gaq.push(['_setAccount', 'UA-37209568-1']);
+				_gaq.push(['_trackPageview']);
+				(function() {
+					var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+					ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+				})();
+			}
+		</script>
+	</body>
+</html>
