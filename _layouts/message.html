@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+{{ content }}
+{% if page.attachments.size > 0 %}
+	<ul>
+		{% for attachment in page.attachments %}
+			{% capture attachment %}{{ attachment | replace:'#','%23' | replace:'?','%3F' }}{% endcapture %}
+			<li>
+				<a href="/attachments/{{page.subject}}/{{attachment}}">
+					{{attachment}}
+				</a>
+			</li>
+		{% endfor %}
+	</ul>
+{% endif %}
