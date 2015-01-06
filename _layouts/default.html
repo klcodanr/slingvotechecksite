@@ -18,9 +18,10 @@
 			<meta property="og:url" content="{{ site.parenturl }}{{page.url | remove: 'index.html' | replace: '.html', '' | replace: ' ', '%20' }}"/>
 			<link rel="canonical" href="{{ site.parenturl }}{{page.url | remove: 'index.html' | replace: '.html', '' | replace: ' ', '%20' }}" />
 		{% endif %}
-{% bundle %}[{{ site.parenturl }}/css/base.css, {{ site.parenturl }}/css/skeleton.css, {{ site.parenturl }}/css/layout.css, {{ site.parenturl }}/css/colorbox.css ]{% endbundle %}
-		<link rel="shortcut icon" href="/favicon.ico" />
-		<link rel="alternate" type="application/rss+xml" href="/feed.xml" title="DanKlco.com RSS Feed" />
+		<link rel="stylesheet" type="text/css" href="{{ site.parenturl }}/css/base.css" />
+		<link rel="stylesheet" type="text/css" href="{{ site.parenturl }}/css/layout.css" />
+		<link rel="shortcut icon" href="{{ site.parenturl }}/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Sling Vote Check RSS Feed" />
 		<link rel="author" href="https://plus.google.com/109214091683324297793"/>
 	</head>
 	<body vocab="http://schema.org/">
@@ -67,7 +68,8 @@
 		<!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-{% bundle %}[//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js, {{ site.parenturl }}/js/jquery.colorbox-min.js, {{ site.parenturl }}/js/custom.js] {% endbundle %}
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script src="{{ site.parenturl }}/js/custom.js"></script>
 		<script>
 			var track = true;
 			try {

@@ -8,7 +8,7 @@ layout: default
 		{% for attachment in page.attachments %}
 			{% capture attachment %}{{ attachment | replace:'#','%23' | replace:'?','%3F' }}{% endcapture %}
 			<li>
-				<a href="/attachments/{{page.subject}}/{{attachment}}">
+				<a href="/assets/{{page.subject}}/{{attachment}}">
 					{{attachment}}
 				</a>
 			</li>
