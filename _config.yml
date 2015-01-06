@@ -2,7 +2,7 @@
 name: DanKlco.com Sling Vote Check
 
 # Short description (goes below the title; it will also be used in the RSS feed)
-description: Home for my work
+description: Validation of builds by the Sling Project
 
 # Your name, as you want it to appear underneath each post and in the footer
 author: Daniel Klco
@@ -24,7 +24,7 @@ parenturl: https://www.danklco.com
 permalink: /posts/:year/:month/:day/:title/
 
 # Save the results to the httpd server
-destination: /var/www/html
+destination: /var/www/vhosts/slingvotecheck
 
 # Exclude system files
 exclude: [.gitignore]
