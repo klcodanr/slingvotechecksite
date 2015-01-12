@@ -3,33 +3,58 @@ layout: default
 title: Home
 ---
 
+<div class="row">
+	<div class="sixteen columns breadcrumb">
+		<a href="{{ site.parenturl }}">Home</a> >  Sling Vote Check
+	</div>
+</div>
 {% if paginator.page != 1 %}
-	<div class="nine columns pagination top">
-		Page: {{paginator.page}} of {{paginator.total_pages}}
+	<div class="row">
+		<div class="sixteen columns pagination top">
+			Page: {{paginator.page}} of {{paginator.total_pages}}
+		</div>
 	</div>
 {% endif %}
 <div id="recent-activity">
-	{% for post in paginator.posts %}
+	<div class="row">
 		<div class="three columns">
-			<em>{{post.date | date: "%b %d %Y"}}</em>
+			<strong>Date</strong>
 		</div>
-		<div class="six columns">
-			<a href="{% if post.original %}{{ post.original }}{% else %}{{ post.url }}{% endif %}" title="{{ post.title }}">{{ post.title }}</a>
+		<div class="three columns">
+			<strong>Status</strong>
+		</div>
+		<div class="ten columns">
+			<strong>Subject</strong>
+		</div>
+	</div>
+	{% for post in paginator.posts %}
+		<div class="row">
+			<div class="three columns">
+				<em>{{post.date | date: "%b %d %Y"}}</em>
+			</div>
+			<div class="three columns">
+				<span class="validation-result validation-{{post.status}}" title="{{ post.reason }}">{{post.status | upcase }}</span>
+			</div>
+			<div class="ten columns">
+				<a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+			</div>
 		</div>
 	{% endfor %}
 </div>
 {% if paginator.total_pages != 1 %}
-	<div class="nine columns pagination">
-		{% if paginator.previous_page %}
-			{% if paginator.previous_page == 1 %}
-				<a href="/" class="previous">Previous</a>
-			{% else %}
-				<a href="/page{{paginator.previous_page}}/" class="previous">Previous</a>
+	<div class="row">
+		<div class="sixteen columns pagination">
+			{% if paginator.previous_page %}
+				{% if paginator.previous_page == 1 %}
+					<a href="/" class="previous">Previous</a>
+				{% else %}
+					<a href="/page{{paginator.previous_page}}/" class="previous">Previous</a>
+				{% endif %}
 			{% endif %}
-		{% endif %}
-		<span class="page_number ">Page: {{paginator.page}} of {{paginator.total_pages}}</span>
-		{% if paginator.next_page %}
-			<a href="/page{{paginator.next_page}}/" class="next">Next</a>
-		{% endif %}
+			<span class="page_number ">Page: {{paginator.page}} of {{paginator.total_pages}}</span>
+			{% if paginator.next_page %}
+				<a href="/page{{paginator.next_page}}/" class="next">Next</a>
+			{% endif %}
+		</div>
 	</div>
 {% endif %}

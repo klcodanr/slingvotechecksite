@@ -2,16 +2,28 @@
 layout: default
 ---
 
-{{ content }}
-{% if page.attachments.size > 0 %}
-	<ul>
-		{% for attachment in page.attachments %}
-			{% capture attachment %}{{ attachment | replace:'#','%23' | replace:'?','%3F' }}{% endcapture %}
-			<li>
-				<a href="/assets/{{page.subject}}/{{attachment}}">
-					{{attachment}}
-				</a>
-			</li>
-		{% endfor %}
-	</ul>
-{% endif %}
+<div class="row">
+	<div class="sixteen columns breadcrumb">
+		<a href="{{ site.parenturl }}">Home</a> > <a href="/">Sling Vote Check</a> > {{ page.title }}
+	</div>
+</div>
+<div class="row">
+	<div class="sixteen columns content">
+		<h2>{{ page.title }}</h2>
+		<h3>From {{ page.sender }} on {{ page.sentDate }}</h3>
+		<h3>Status: <span class="validation-result validation-{{page.status}}" title="{{ post.reason }}">{{page.status | upcase }}</span></h3>
+		{{ content }}
+		{% if page.attachments.size > 0 %}
+			<ul>
+				{% for attachment in page.attachments %}
+					{% capture attachment %}{{ attachment | replace:'#','%23' | replace:'?','%3F' }}{% endcapture %}
+					<li>
+						<a href="{{attachment}}">
+							{{attachment}}
+						</a>
+					</li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+	</div>
+</div>
